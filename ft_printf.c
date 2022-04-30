@@ -6,7 +6,7 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/04/30 20:03:07 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/04/30 21:34:49 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,28 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
+int ft_putstr(const char *s)
+{
+    write (1, s, ft_strlen(s));
+    return (ft_strlen(s));
+}
+
 int get_specifier(va_list arg, const char *string, int i)
 {
     if (string[i + 1] == 'c')
-                return (ft_putchar(va_arg(arg, int)));           
-    if (string[i + 1] == 'd')
-             return (ft_putchar(va_arg(arg, int)));     
-    return(0);   
+        return (ft_putchar(va_arg(arg, int)));           
+    else if (string[i + 1] == 'd')
+        return (ft_putchar(va_arg(arg, int)));    
+    else if (string[i + 1] == 's')
+        return (ft_putstr(va_arg(arg, char *)));
+    else if (string[i + 1] == '%')
+        return (ft_putchar(string[i + 1]));
+    else if (string[i + 1] == 'p')
+        return (1);
+    
+    
+        
+    return(0);
 }
 
 int    ft_printf(const char *string, ...)
@@ -112,11 +127,15 @@ int    ft_printf(const char *string, ...)
 
 int main()
 {   
-    char c = 'i';
+    char c = '%';
     char str[5] = "casa";
     
-    ft_printf("Aqui mostro a letra %d ", c); 
+    ft_printf("Aqui mostro a letra %c ", c); 
     printf("\n Uma string: %s", str);
+    printf("\na string str em ponteiro e %p", str);
+    printf("\na string str em ponteiro e %d", c);
+    printf("\na string str em ponteiro e %i", c);
     //printf("\nNumero de caracters na funcao printf e %d ", ft_printf());  
     return (0);
+    
 }
