@@ -6,7 +6,7 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/04/30 21:34:49 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/05/03 20:38:11 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int ft_putchar(char c)
     write(1, &c, 1);
     return(1);
 }
-
 size_t	ft_strlen(const char *s)
 {
 	int	i;
@@ -75,10 +74,70 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*str;
+
+	str = NULL;
+	i = 0;
+	str = (char *)malloc(sizeof(*s) * ft_strlen(s) + 1);
+	if (str == NULL)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+
 int ft_putstr(const char *s)
 {
     write (1, s, ft_strlen(s));
     return (ft_strlen(s));
+}
+
+  /*   - Store the remainder when the number is divided by 16 in a temporary variable temp. If temp is less than 10, insert (48 + temp) in a character array otherwise if temp is greater than or equals to 10, insert (55 + temp) in the character array.
+      Divide the number by 16 now
+    - Repeat the above two steps until the number is not equal to 0.
+    - Print the array in reverse order now. */
+
+void hex_converter(unsigned long long int n)
+{
+    // ele recebe um n de 87523
+    int i = 0;
+    int temp;
+    //int n;
+    char arr[100];
+    //arr = ft_strdup(s);
+
+    while (n != 0)
+    {
+        temp = 0;
+        temp = n % 16;        
+        // temp vai ficar com resto 3.
+        if (temp < 10)
+        {
+            arr[i] = temp + 48;
+            i++;    
+        }
+        else
+        {
+            arr[i] = temp + 87;
+            i++;    
+        }
+        n = n / 16;              
+    }
+    while (i >= 0)
+    {
+        ft_putchar(arr[i]);
+        i--;
+    }    
+
+    
 }
 
 int get_specifier(va_list arg, const char *string, int i)
@@ -91,8 +150,8 @@ int get_specifier(va_list arg, const char *string, int i)
         return (ft_putstr(va_arg(arg, char *)));
     else if (string[i + 1] == '%')
         return (ft_putchar(string[i + 1]));
-    else if (string[i + 1] == 'p')
-        return (1);
+     else if (string[i + 1] == 'p')
+        hex_converter(va_arg(arg, unsigned long long int));
     
     
         
@@ -128,14 +187,48 @@ int    ft_printf(const char *string, ...)
 int main()
 {   
     char c = '%';
-    char str[5] = "casa";
+    char *str = "16";
+    int f = 87523;
+
     
-    ft_printf("Aqui mostro a letra %c ", c); 
-    printf("\n Uma string: %s", str);
+    hex_converter(f);
+   
+    
+    printf("\nAqui mostro a letra %p\n", f); 
+
+    int i=100;
+    printf("%d\n",i);
+    int *pointer = &i;
+    printf("%p\n",i);
+    printf("%p\n",pointer);
+
+    ft_printf("\n%p",pointer);
+
+    
+    /* printf("\n Uma string: %s", str);
     printf("\na string str em ponteiro e %p", str);
     printf("\na string str em ponteiro e %d", c);
     printf("\na string str em ponteiro e %i", c);
     //printf("\nNumero de caracters na funcao printf e %d ", ft_printf());  
+
+    int x = 0;
+
+    x = 38 % 16;
+
+    printf("\n----remainder of X ----- %d", x);
+
+    float y;
+
+    y = ((float)2545 / (float)16);
+    
+    printf("\nfloat is %f", y);
+
+    printf("\nhex da string %p", *str);
+
+    int z = 97114;
+
+    printf("\nhex de 97114 %p", z); */
+    
     return (0);
     
 }
