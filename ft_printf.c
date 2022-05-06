@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/06 14:41:16 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/06 15:41:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int    ft_printf(const char *string, ...)
 
     i = 0;
     ret = 0;
-
    va_start(arg, string);
    while (string[i])
    {
