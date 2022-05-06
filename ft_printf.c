@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/03 20:38:11 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/05/06 11:48:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,53 +105,169 @@ int ft_putstr(const char *s)
     - Repeat the above two steps until the number is not equal to 0.
     - Print the array in reverse order now. */
 
-void hex_converter(unsigned long long int n)
+int len_n16(unsigned long long n)
 {
-    // ele recebe um n de 87523
-    int i = 0;
-    int temp;
-    //int n;
-    char arr[100];
-    //arr = ft_strdup(s);
+    int len;
 
+    len = 0;
     while (n != 0)
     {
-        temp = 0;
-        temp = n % 16;        
-        // temp vai ficar com resto 3.
-        if (temp < 10)
-        {
-            arr[i] = temp + 48;
-            i++;    
-        }
-        else
-        {
-            arr[i] = temp + 87;
-            i++;    
-        }
-        n = n / 16;              
+        len++;
+        n = n / 16;
     }
+    return (len);
+}
+
+int len_n10(unsigned int n)
+{
+    int len;
+
+    len = 0;
+    while (n != 0)
+    {
+        len++;
+        n = n / 10;
+    }
+    return (len);
+}
+
+int ft_putchar_rev(int *arr, int len)
+{
+    int i;
+
+    i = len;
     while (i >= 0)
     {
         ft_putchar(arr[i]);
         i--;
-    }    
-
-    
+    } 
+    return (1);
 }
+
+int hex_converter(unsigned long long n)
+{
+    int temp;
+    int i;
+    int len;
+   
+    len = len_n16(n);
+    i = 0;
+
+    int arr[len];
+
+    if (n == 0)
+    return (write(1, "0", 1)); 
+    write(1, "0x", 2);
+    while (n != 0)
+    {
+        temp = 0;
+        temp = n % 16;        
+        if (temp < 10)        
+            arr[i++] = (temp + '0');     
+        else       
+            arr[i++] = (temp - 10 + 'a');      
+        n = n / 16;              
+    }    
+    ft_putchar_rev(arr, len);    
+}
+
+int hex_Upper_lower(unsigned long long n, const char *s, int j)
+{
+    int temp;
+    int i;
+    int len;
+   
+    len = len_n16(n);
+    i = 0;
+
+    int arr[len];
+
+    if (n == 0)
+    return (write(1, "0", 1)); 
+    while (n != 0)
+    {
+        temp = 0;
+        temp = n % 16;        
+        if (temp < 10)        
+            arr[i++] = (temp + '0');     
+        else if (s[j + 1] == 'X')       
+            arr[i++] = (temp - 10 + 'A');
+        else if (s[j + 1] == 'x')  
+            arr[i++] = (temp - 10 + 'a');    
+        n = n / 16;              
+    }    
+    ft_putchar_rev(arr, len);    
+}
+
+
+
+char *unsigned_func(unsigned int n)
+{
+    char *num;
+    int len;
+
+    len = len_n10(n);
+    num = (char *)malloc(sizeof(char) * (len + 1));
+    if (!num)
+        return (NULL);
+    num[len] = '\0';
+    while (n != 0)
+    {
+        num[len - 1] = n % 10 + '0';
+        n = n / 10;
+        len--;
+    }
+    return (num);    
+}
+
+int unsigned_func_2(unsigned int n)
+{
+    char *num;
+    int out_len;
+
+    out_len = 0;
+    if (n == 0)
+        return (write(1, "0", 1));
+    else
+    {
+        num = unsigned_func(n);
+        
+        out_len = out_len + ft_putstr(num);
+            
+        //free(num);
+    }
+    return (out_len);
+}
+
+
+
+/* The int is unsinged, but you've told printf to look at it as a signed int.
+
+Try
+
+unsigned int x = -12; printf("%u", x);
+It won't print "12", but will print the max value of an unsigned int minus 11. */
+
 
 int get_specifier(va_list arg, const char *string, int i)
 {
     if (string[i + 1] == 'c')
         return (ft_putchar(va_arg(arg, int)));           
-    else if (string[i + 1] == 'd')
+    else if ((string[i + 1] == 'd') || (string[i + 1] == 'i'))
         return (ft_putchar(va_arg(arg, int)));    
     else if (string[i + 1] == 's')
-        return (ft_putstr(va_arg(arg, char *)));
+        return (ft_putstr(va_arg(arg, char *)));    
+    else if (string[i + 1] == 'p')
+       return (hex_converter(va_arg(arg, unsigned long long)));
+    else if (string[i + 1] == 'u')
+        return (unsigned_func_2(va_arg(arg, unsigned int)));
+    else if (string[i + 1] == 'x')
+        return (hex_Upper_lower(va_arg(arg, unsigned long long), string, i));
+    else if (string[i + 1] == 'X')
+        return (hex_Upper_lower(va_arg(arg, unsigned long long), string, i));
     else if (string[i + 1] == '%')
         return (ft_putchar(string[i + 1]));
-     else if (string[i + 1] == 'p')
-        hex_converter(va_arg(arg, unsigned long long int));
+
     
     
         
@@ -186,23 +302,39 @@ int    ft_printf(const char *string, ...)
 
 int main()
 {   
-    char c = '%';
-    char *str = "16";
-    int f = 87523;
-
-    
-    hex_converter(f);
-   
-    
-    printf("\nAqui mostro a letra %p\n", f); 
-
-    int i=100;
-    printf("%d\n",i);
+       
+    int i = 13432250;
     int *pointer = &i;
-    printf("%p\n",i);
-    printf("%p\n",pointer);
 
-    ft_printf("\n%p",pointer);
+    printf("%p\n", (void *)&i);
+    printf("O pointer da printf original e %p\n\n", (void *)pointer);
+
+    ft_printf("%p", &i);
+    ft_printf("\no Pointer da funcao bla bla e %p\n", (void *)pointer);
+
+    printf("\n%ld\n", sizeof(void *));
+    printf("\n%ld\n", sizeof(int));
+
+    int j = -5;
+    int p = -1000;
+    int l = 2000;
+    printf("\no %%u de -5 e %u\n", j);
+    printf("\no %%u de -1000 e %u\n", p);
+    printf("\no %%u de 2000 e %u\n", l);
+
+    ft_printf("\n\n Esta e para ver como esta a minha funcao com o u usando o -1000 ----> %u <----\n", p);
+    ft_printf("\no %%u de -5 e %u\n", j);
+    ft_printf("\no %%u de -1000 e %u\n", p);
+    ft_printf("\no %%u de 2000 e %u\n", l);
+
+    ft_printf("\ntestar o X e x\n");
+    printf("\nprintf x de -1000 e 2000 %x %x\n", p, l);
+    ft_printf("ft_printf x de -1000 e 2000 %x %x\n", p, l);
+
+    printf("\nprintf X de -1000 e 2000 %X %X\n", p, l);
+    ft_printf("ft_printf X de -1000 e 2000 %X %X\n", p, l);
+
+
 
     
     /* printf("\n Uma string: %s", str);
