@@ -6,13 +6,11 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/06 13:31:09 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/06 14:41:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-
 
 char *unsigned_func(unsigned int n)
 {
@@ -85,14 +83,14 @@ int    ft_printf(const char *string, ...)
    va_start(arg, string);
    while (string[i])
    {
-       if (string[i] == '%')
+       if ((string[i] == '%') && (ft_strchr("cspdiuxX%", string[i + 1])))
        {
            ret = ret + get_specifier(arg, string, i);
             i++;                  
             // nao esquecer de criar a condicao para caso a string acabe em %
        }
        else       
-           write(1, &string[i], 1);       
+           ret = ret + write(1, &string[i], 1);       
         i++;
    }
    va_end(arg);
@@ -132,6 +130,11 @@ int main()
 
     printf("\nprintf X de -1000 e 2000 %X %X\n", p, l);
     ft_printf("ft_printf X de -1000 e 2000 %X %X\n", p, l);
+
+    printf("\n o que acontece quando o printf acaba em %%");
+    ft_printf("\n ver o que acontece quando a condicao acaba em %u\n", p);
+
+    printf("\nretorno do printf e %d\n", ft_printf("deve ter este numero de caracteres"));
     
     return (0);
     

@@ -36,7 +36,7 @@ int hex_converter(unsigned long long n)
             arr[i++] = (temp - 10 + 'a');      
         n = n / 16;              
     }    
-    ft_putchar_rev(arr, len);    
+    return (ft_putchar_rev(arr, len));    
 }
 
 int hex_Upper_lower(unsigned long long n, const char *s, int j)
@@ -64,5 +64,5 @@ int hex_Upper_lower(unsigned long long n, const char *s, int j)
             arr[i++] = (temp - 10 + 'a');    
         n = n / 16;              
     }    
-    ft_putchar_rev(arr, len);    
+    return (ft_putchar_rev(arr, len));    
 }

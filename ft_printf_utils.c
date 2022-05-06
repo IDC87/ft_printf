@@ -32,4 +32,12 @@ int ft_putstr(const char *s)
 {
     write (1, s, ft_strlen(s));
     return (ft_strlen(s));
-}  
+} 
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s != (unsigned char)c)
+		if (!*s++)
+			return (0);
+	return ((char *)s);
+}

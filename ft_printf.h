@@ -9,6 +9,7 @@
 int    ft_printf(const char *, ...);
 int     ft_putchar(char c);
 size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
 int len_n16(unsigned long long n);
 int len_n10(unsigned int n);
 int ft_putchar_rev(int *arr, int len);
