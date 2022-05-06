@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/06 11:48:39 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/06 11:59:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,12 +241,7 @@ int unsigned_func_2(unsigned int n)
 
 
 
-/* The int is unsinged, but you've told printf to look at it as a signed int.
 
-Try
-
-unsigned int x = -12; printf("%u", x);
-It won't print "12", but will print the max value of an unsigned int minus 11. */
 
 
 int get_specifier(va_list arg, const char *string, int i)
