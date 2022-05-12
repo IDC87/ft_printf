@@ -33,7 +33,7 @@
  # PS1="\W >" -trims the terminal command prompt 
  # PROMPT_DIRTRIM=2 -also trims terminal (number can be changed acording to desire)
  # CTRL + K and then press S - saves all projects at once in VScode
- # sudo apt-get install -y ascii - instalar tabela ascii no bash (melhor que a por defeito)
+ # sudo apt-get install -y ascii - installs ascii table in bash (better than the original one)
  # shell find . -type f -name '*.c') - the basic syntax to find stuff
 
  #SHELL TERMINAL OPTIONS ENV
@@ -60,7 +60,7 @@
  #COMPLILING OPTIONS
  #gcc -WALL -WEXTRA -WERROR
  # -WALL (Enable all warning messages)
- # -WERROR (Make all warnings into erros)
+ # -WERROR (Make all warnings into errors)
  # -WEXTRA (enable extra warnings)
  # -E (Preprocessor), -S (compiler), -c (assembler)
  # gcc -c name.c && mv name.o folder/ (compiles then move to another folder)
@@ -102,11 +102,8 @@
 #MAKEFILE MUST CONTAIN RULES: $(NAME), all, clean, fclean, re.
 #BONUSES MUST BE IN _bonus.{c/h}
 
-#A FAZER:
- #ler ficheiros executaveis com todas as opcoes
 
-
- # VER LINKs (Importante) : https://cs.colby.edu/maxwell/courses/tutorials/maketutor/
+ # LINKs (Important) : https://cs.colby.edu/maxwell/courses/tutorials/maketutor/
 
  
 
@@ -117,6 +114,8 @@ NAME = libft.a
 OBJS = $(SRCS:.c=.o) #Apenas este comando chega como suficiente para criar os objects files
 BOBJS = $(BONUS:.c=.o)
 RM = rm -f
+SOURCEDIR = sources/
+Includes = includes/
 
 #TESTS	= tests/test1.c
 #TNAME	= test
@@ -125,7 +124,7 @@ RM = rm -f
 #COMPILING VARIABLES
 CC = gcc
 CCmove = $(CC) -c $(SRCS) && mv
-CFLAGS = -Wall -Wextra -Werror #-I #-g #--save --temps
+CFLAGS = -Wall -Wextra -Werror -I #-g #--save --temps
 HEADER = libft.h
 
 DEF_COLOR = \033[0;39m
@@ -171,56 +170,17 @@ SetStream = git push --set-upstream origin master
 CleanUrl = git remote rm origin
 
 
-SRCS = ft_bzero.c\
-	ft_isalnum.c\
-	ft_isalpha.c\
-	ft_isascii.c\
-	ft_isdigit.c\
-	ft_isprint.c\
-	ft_memcpy.c\
-	ft_memmove.c\
-	ft_memset.c\
-	ft_strlen.c\
-	ft_strlcpy.c\
-	ft_strlcat.c\
-	ft_toupper.c\
-	ft_tolower.c\
-	ft_strchr.c\
-	ft_strrchr.c\
-	ft_strncmp.c\
-	ft_memchr.c\
-	ft_memcmp.c\
-	ft_strnstr.c\
-	ft_atoi.c\
-	ft_calloc.c\
-	ft_strdup.c\
-	ft_substr.c\
-	ft_strjoin.c\
-	ft_strtrim.c\
-	ft_itoa.c\
-	ft_split.c\
-	ft_strmapi.c\
-	ft_striteri.c\
-	ft_putchar_fd.c\
-	ft_putstr_fd.c\
-	ft_putendl_fd.c\
-	ft_putnbr_fd.c\
+SRCS = ft_printf.c\
+		ft_printf_utils.c\
+		ft_printf_hexs.c\
+		ft_printf_getlen.c\
 
-BONUS = ft_lstnew_bonus.c\
-		ft_lstadd_front_bonus.c\
-		ft_lstsize_bonus.c\
-		ft_lstlast_bonus.c\
-		ft_lstadd_back_bonus.c\
-		ft_lstdelone_bonus.c\
-		ft_lstclear_bonus.c\
-		ft_lstiter_bonus.c\
-	
 
 #>>>>>NECESSARIO PARA ENTREGA<<<<<<
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(SOURCEDIR)$(OBJS)
 	ar rcs $(NAME) $(OBJS)
 	ranlib $(NAME)
 

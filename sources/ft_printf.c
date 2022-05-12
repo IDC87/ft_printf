@@ -6,11 +6,12 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/12 16:17:23 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/05/12 20:48:20 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+# include	<stdlib.h>
 
 char	*unsigned_func(unsigned int n)
 {
@@ -60,9 +61,9 @@ int	get_specifier(va_list arg, const char *string, int i)
 	else if (string[i + 1] == 'u')
 		return (unsigned_func_2(va_arg(arg, unsigned int)));
 	else if (string[i + 1] == 'x')
-		return (hex_Upper_lower(va_arg(arg, unsigned long long), string, i));
+		return (hex_upper_lower(va_arg(arg, unsigned long long), string, i));
 	else if (string[i + 1] == 'X')
-		return (hex_Upper_lower(va_arg(arg, unsigned long long), string, i));
+		return (hex_upper_lower(va_arg(arg, unsigned long long), string, i));
 	else if (string[i + 1] == '%')
 		return (ft_putchar(string[i + 1]));
 	return (0);
@@ -91,7 +92,7 @@ int	ft_printf(const char *string, ...)
 	va_end(arg);
 	return (ret);
 }
-/* int main()
+ int main()
  {   
        
     int i = 13432250;
@@ -132,4 +133,4 @@ int	ft_printf(const char *string, ...)
     
     return (0);
     
-} */
+} 
