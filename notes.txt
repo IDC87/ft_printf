@@ -49,3 +49,9 @@ return (x);
       Divide the number by 16 now
     - Repeat the above two steps until the number is not equal to 0.
     - Print the array in reverse order now.
+
+
+    COISAS QUE FALTAM
+
+    // nao esquecer de criar a condicao para caso a string acabe em % (na funcao do ft_printf)
+    /*relembrar por causa do free(num)*/ nas funcoes dos unsigneds

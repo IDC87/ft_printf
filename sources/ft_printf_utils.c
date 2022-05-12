@@ -6,16 +6,16 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 13:15:03 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/06 13:15:03 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/12 16:32:19 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putchar(char c)
+int	ft_putchar(char c)
 {
-    write(1, &c, 1);
-    return(1);
+	write(1, &c, 1);
+	return (1);
 }
 
 size_t	ft_strlen(const char *s)
@@ -28,11 +28,11 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int ft_putstr(const char *s)
+int	ft_putstr(const char *s)
 {
-    write (1, s, ft_strlen(s));
-    return (ft_strlen(s));
-} 
+	write (1, s, ft_strlen(s));
+	return (ft_strlen(s));
+}
 
 char	*ft_strchr(const char *s, int c)
 {

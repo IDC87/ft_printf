@@ -1,6 +1,9 @@
 # System files
 .DS_Store
 
+# Vscode junk
+*.vscode/
+
 # Object files
 *.o
 

@@ -210,13 +210,9 @@ BONUS = ft_lstnew_bonus.c\
 
 all: $(NAME)
 
-
-
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 	ranlib $(NAME)
-
-
 
 clean:
 	$(RM) $(OBJS)
