@@ -298,7 +298,7 @@ push: GitCommit REPOLibft UploadGit CleanUrl
 	@echo
 	@echo "$(GREEN)UPDATE SUCCESSFUL! REPO CLEAN ALSO SUCCESSFUL!$(DEF_COLOR)"
 	@echo
-#FINAL COMMAND should be: make Push m="message" 
+#FINAL COMMAND should be: make Push m="message". 
 
 
 #Dictate: 
