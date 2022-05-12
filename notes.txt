@@ -55,3 +55,4 @@ return (x);
 
     // nao esquecer de criar a condicao para caso a string acabe em % (na funcao do ft_printf)
     /*relembrar por causa do free(num)*/ nas funcoes dos unsigneds
+    
