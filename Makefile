@@ -128,6 +128,16 @@ CCmove = $(CC) -c $(SRCS) && mv
 CFLAGS = -Wall -Wextra -Werror #-I #-g #--save --temps
 HEADER = libft.h
 
+DEF_COLOR = \033[0;39m
+GRAY = \033[0;90m
+RED = \033[0;91m
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+BLUE = \033[0;94m
+MAGENTA = \033[0;95m
+CYAN = \033[0;96m
+WHITE = \033[0;97m
+
 #TARGET PROGRAM
 TARGET = program
 
@@ -286,7 +296,7 @@ CleanUrl:
 	@$(CleanUrl)
 push: GitCommit REPOLibft UploadGit CleanUrl
 	@echo
-	@echo "UPDATE SUCCESSFUL! REPO CLEAN ALSO SUCCESSFUL!"
+	@echo "(GREEN)UPDATE SUCCESSFUL! REPO CLEAN ALSO SUCCESSFUL!(DEF_COLOR)"
 	@echo
 #FINAL COMMAND should be: make Push m="message" 
 
