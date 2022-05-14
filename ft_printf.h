@@ -6,7 +6,7 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:26:11 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/12 20:47:51 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:39:07 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		hex_converter(unsigned long long n);
 int		hex_upper_lower(unsigned long long n, const char *s, int j);
 char	*unsigned_func(unsigned int n);
 int     unsigned_func_2(unsigned int n);
+int main();
 
 
 #endif
