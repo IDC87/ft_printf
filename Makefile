@@ -40,20 +40,25 @@ SOURCES = ft_printf.c\
 			 main.c\
 
 
-
 all: $(NAME)
 
 $(NAME): 
 	$(OBJ)
-	@echo "COmpiling"
+	@echo "$(BLUE)COmpiling ObJecTs$(DEF_COLOR)"
 	@$(CC) $(CFLAGS) $(SOURCES) $(INCLUDES)
 	@$(AR) $(NAME) *.o
 
 clean:
+	@echo "$(YELLOW)CleAnINg ObJecTs$(DEF_COLOR)"
 	@$(RM) *.o
 fclean: clean
+	@echo "$(YELLOW)CleAnINg liBFile$(DEF_COLOR)"
 	@$(RM) $(NAME)
 re: fclean
+
+erase: re
+	@echo "$(YELLOW)CleAnINg A.OUT$(DEF_COLOR)"
+	@$(RM) a.out
 
 
 #GIT UPLOAD

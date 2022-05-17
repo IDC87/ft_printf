@@ -6,12 +6,13 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 13:30:39 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/14 14:51:33 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/05/17 18:00:03 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ft_printf.h"
 # include	<stdlib.h>
+# include <stdio.h>
 
 int main()
  {   
