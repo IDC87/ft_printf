@@ -6,12 +6,11 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/14 13:30:19 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:38:27 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-# include	<stdlib.h>
 
 char	*unsigned_func(unsigned int n)
 {
@@ -91,4 +90,4 @@ int	ft_printf(const char *string, ...)
 	}
 	va_end(arg);
 	return (ret);
-} 
+}

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 13:20:16 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 16:29:52 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:55:15 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ int	hex_converter(unsigned long long n)
 {
 	int	temp;
 	int	i;
-	int	len;
+	int	*arr;
 
-	len = len_n16(n);
 	i = 0;
-
-	int	arr[len];
-
+	arr = (int *)malloc(sizeof(int) * len_n16(n));
+	if (!arr)
+		return (0);
 	if (n == 0)
 		return (write(1, "0", 1));
 	write(1, "0x", 2);
@@ -36,20 +35,20 @@ int	hex_converter(unsigned long long n)
 			arr[i++] = (temp - 10 + 'a');
 		n = n / 16;
 	}
-	return (ft_putchar_rev(arr, len));
+	free(arr);
+	return (ft_putchar_rev(arr, len_n16(n)));
 }
 
 int	hex_upper_lower(unsigned long long n, const char *s, int j)
 {
 	int	temp;
 	int	i;
-	int	len;
+	int	*arr;
 
-	len = len_n16(n);
 	i = 0;
-
-	int	arr[len];
-
+	arr = (int *)malloc(sizeof(int) * len_n16(n));
+	if (!arr)
+		return (0);
 	if (n == 0)
 		return (write(1, "0", 1));
 	while (n != 0)
@@ -64,5 +63,6 @@ int	hex_upper_lower(unsigned long long n, const char *s, int j)
 			arr[i++] = (temp - 10 + 'a');
 		n = n / 16;
 	}
-	return (ft_putchar_rev(arr, len));
+	free(arr);
+	return (ft_putchar_rev(arr, len_n16(n)));
 }
