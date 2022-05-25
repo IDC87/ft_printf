@@ -26,7 +26,8 @@ WHITE = \033[0;97m
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -c -Wall -Werror -Wextra 
+CFLAGS = -c -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 AR = ar -rcs
 INCLUDES = -I.
 OBJ = $(SRCS:.c=.o)
@@ -37,7 +38,8 @@ SOURCES = ft_printf.c\
 			ft_printf_utils.c\
 			ft_printf_hexs.c\
 			ft_printf_getlen.c\
-			 main.c\
+			libft_functions.c\
+
 
 
 all: $(NAME)
@@ -59,6 +61,11 @@ re: fclean
 erase: re
 	@echo "$(YELLOW)CleAnINg A.OUT$(DEF_COLOR)"
 	@$(RM) a.out
+
+test: $(NAME)
+	$(CC) $(NAME) main.c && ./a.out
+test all: test
+	
 
 
 #GIT UPLOAD

@@ -6,7 +6,7 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/17 17:38:27 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:15:25 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	unsigned_func_2(unsigned int n)
 		num = unsigned_func(n);
 		out_len = out_len + ft_putstr(num);
 	}
+	free(num);
 	return (out_len);
 }
 
@@ -52,11 +53,11 @@ int	get_specifier(va_list arg, const char *string, int i)
 	if (string[i + 1] == 'c')
 		return (ft_putchar(va_arg(arg, int)));
 	else if ((string[i + 1] == 'd') || (string[i + 1] == 'i'))
-		return (ft_putchar(va_arg(arg, int)));
+		return (ft_putchar_num(va_arg(arg, int)));
 	else if (string[i + 1] == 's')
 		return (ft_putstr(va_arg(arg, char *)));
 	else if (string[i + 1] == 'p')
-		return (hex_converter(va_arg(arg, unsigned long long)));
+		return (put_hex_p(va_arg(arg, unsigned long long)));
 	else if (string[i + 1] == 'u')
 		return (unsigned_func_2(va_arg(arg, unsigned int)));
 	else if (string[i + 1] == 'x')

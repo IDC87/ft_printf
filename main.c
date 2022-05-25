@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/14 13:30:39 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/17 18:00:03 by ivda-cru         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 # include "ft_printf.h"
 # include	<stdlib.h>
 # include <stdio.h>
@@ -23,11 +11,12 @@ int main()
     int p = -1000;
     int l = 2000;
 
-    printf("%p\n", (void *)&i);
-    printf("O pointer da printf original e %p\n\n", (void *)pointer);
+    printf("%p\n", -1);
+    printf("(endereco origem)%d\n", &i);
+    printf("O pointer da printf original e %p\n\n", pointer);
 
-    ft_printf("%p", &i);
-    ft_printf("\no Pointer da funcao bla bla e %p\n", (void *)pointer);
+    ft_printf("%p", -1);
+    ft_printf("\no Pointer da funcao bla bla e %p\n", pointer);
 
     printf("\n%ld\n", sizeof(void *));
     printf("\n%ld\n", sizeof(int));
@@ -53,7 +42,9 @@ int main()
     ft_printf("\n ver o que acontece quando a condicao acaba em %u\n", p);
 
     printf("\nretorno do printf e %d\n", ft_printf("deve ter este numero de caracteres"));
+
     
+    ft_printf("ft_printf X de -1000 e 2000 %X %X\n", p, l);
     return (0);
     
 } 

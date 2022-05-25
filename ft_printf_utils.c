@@ -18,6 +18,20 @@ int	ft_putchar(char c)
 	return (1);
 }
 
+int ft_putchar_num(int n)
+{
+	char *str;
+	int len;	
+	
+	str = ft_itoa(n);
+	if (!str)
+		return (0);
+	len = ft_strlen(str);
+	write(1, str, len);
+	free(str);
+	return (len);
+}
+
 size_t	ft_strlen(const char *s)
 {
 	int	i;
@@ -28,16 +42,23 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_putstr(const char *s)
+int	ft_putstr(char *s)
 {
-	write (1, s, ft_strlen(s));
+	int i;
+
+	i = 0;
+	if (s == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (s[i])
+	{
+		write (1, &s[i], 1);
+		i++;
+	}
 	return (ft_strlen(s));
 }
 
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s != (unsigned char)c)
-		if (!*s++)
-			return (0);
-	return ((char *)s);
-}
+
+

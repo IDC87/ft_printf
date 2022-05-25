@@ -38,15 +38,15 @@ int	len_n10(unsigned int n)
 	return (len);
 }
 
-int	ft_putchar_rev(int *arr, int len)
-{
-	int	i;
 
-	i = len;
-	while (i >= 0)
+int	ft_putchar_rev(unsigned long long n, int len)
+{
+	while (len >= 0)
 	{
-		ft_putchar(arr[i]);
-		i--;
+		ft_putchar(n);
+		len--;
 	}
+
 	return (1);
 }
+
