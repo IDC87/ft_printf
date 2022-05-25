@@ -6,7 +6,7 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:26:11 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/25 17:55:23 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:49:40 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ int		len_n10(unsigned int n);
 int		ft_putchar_rev(unsigned long long n, int len);
 int		ft_putstr(char *s);
 int    put_hex_p(unsigned long long n);
-void		hex_converter(unsigned long long n);
-int		hex_upper_lower(unsigned long long n, const char *s, int j);
+int		hex_converter(unsigned long long n);
+int	    hex_converter_upper(unsigned int n);
+int	    hex_converter_lower(unsigned int n);
 char	*unsigned_func(unsigned int n);
 int		unsigned_func_2(unsigned int n);
 //int		main(void);

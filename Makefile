@@ -62,9 +62,13 @@ erase: re
 	@echo "$(YELLOW)CleAnINg A.OUT$(DEF_COLOR)"
 	@$(RM) a.out
 
-test: $(NAME)
-	$(CC) $(NAME) main.c && ./a.out
-test all: test
+test2: $(NAME)
+	@$(CC) $(NAME) main.c && ./a.out
+test: test2
+	@echo "$(RED)ComPiLing EveRYthING aNd DeLEtINg aLs0$(DEF_COLOR)"
+	make erase
+
+.PHONY = all
 	
 
 

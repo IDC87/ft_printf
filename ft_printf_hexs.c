@@ -11,12 +11,17 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-void	hex_converter(unsigned long long n)
+int	hex_converter(unsigned long long n)
 {
 	int	i;
+	int ret;
 
-	i = 0;	
+	i = 0;
+	ret = 0;
+	if (n == 0)
+		return (write(1, "0", 1));	
 	if (n >= 16)
 	{
 		hex_converter(n / 16);
@@ -29,6 +34,58 @@ void	hex_converter(unsigned long long n)
 		else
 			ft_putchar(n - 10 + 'a');
 	}
+	ret = ret + len_n16(n);
+	return (ret);
+}
+
+int	hex_converter_lower(unsigned int n)
+{
+	int	i;
+	int ret;
+
+	i = 0;
+	ret = 0;
+	if (n == 0)
+		return (write(1, "0", 1));	
+	if (n >= 16)
+	{
+		hex_converter(n / 16);
+		hex_converter(n % 16);
+	}
+	else
+	{
+		if (n <= 9)
+			ft_putchar(n + '0');
+		else
+			ft_putchar(n - 10 + 'a');
+	}
+	ret = ret + len_n16(n);
+	return (ret);
+}
+
+int	hex_converter_upper(unsigned int n)
+{
+	int	i;
+	int ret;
+
+	i = 0;
+	ret = 0;
+	if (n == 0)
+		return (write(1, "0", 1));	
+	if (n >= 16)
+	{
+		hex_converter_upper(n / 16);
+		hex_converter_upper(n % 16);
+	}
+	else
+	{
+		if (n <= 9)
+			ft_putchar(n + '0');
+		else
+			ft_putchar(n - 10 + 'A');
+	}
+	ret = ret + len_n16(n);
+	return (ret);
 }
 
 int put_hex_p(unsigned long long n)
@@ -46,32 +103,4 @@ int put_hex_p(unsigned long long n)
 	}
 	return (ret);
 
-}
-
-int	hex_upper_lower(unsigned long long n, const char *s, int j)
-{
-	int	temp;
-	int	i;
-	int	*arr;
-
-	i = 0;
-	arr = (int *)malloc(sizeof(int) * len_n16(n));
-	if (!arr)
-		return (0);
-	if (n == 0)
-		return (write(1, "0", 1));
-	while (n != 0)
-	{
-		temp = 0;
-		temp = n % 16;
-		if (temp < 10)
-			arr[i++] = (temp + '0');
-		else if (s[j + 1] == 'X')
-			arr[i++] = (temp - 10 + 'A');
-		else if (s[j + 1] == 'x')
-			arr[i++] = (temp - 10 + 'a');
-		n = n / 16;
-	}
-	//free(arr);
-	return (ft_putchar_rev(1, len_n16(n)));
 }
