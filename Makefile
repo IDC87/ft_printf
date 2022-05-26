@@ -70,7 +70,8 @@ test: test2
 
 .PHONY = all
 	
-
+norm:
+	@norminette $(SRC) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
 
 #GIT UPLOAD
 

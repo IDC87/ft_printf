@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 13:15:03 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 16:32:19 by ivda-cru         ###   ########.fr       */
+/*   Created: 2022/05/26 15:31:42 by ivda-cru          #+#    #+#             */
+/*   Updated: 2022/05/26 15:31:42 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	ft_putchar(char c)
 	return (1);
 }
 
-int ft_putchar_num(int n)
+int	ft_putchar_num(int n)
 {
-	char *str;
-	int len;	
-	
+	char	*str;
+	int		len;	
+
 	str = ft_itoa(n);
 	if (!str)
 		return (0);
@@ -44,7 +44,7 @@ size_t	ft_strlen(const char *s)
 
 int	ft_putstr(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (s == NULL)
@@ -59,6 +59,3 @@ int	ft_putstr(char *s)
 	}
 	return (ft_strlen(s));
 }
-
-
-

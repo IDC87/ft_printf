@@ -6,7 +6,7 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:52:26 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/25 17:06:52 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/05/26 15:21:18 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*ft_strchr(const char *s, int c)
 			return (0);
 	return ((char *)s);
 }
+
 char	*ft_strdup(const char *s)
 {
 	int		i;

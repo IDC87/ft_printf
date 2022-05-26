@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_getLen.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 13:30:39 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 16:20:00 by ivda-cru         ###   ########.fr       */
+/*   Created: 2022/05/26 15:31:26 by ivda-cru          #+#    #+#             */
+/*   Updated: 2022/05/26 15:31:26 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	len_n10(unsigned int n)
 	return (len);
 }
 
-
 int	ft_putchar_rev(unsigned long long n, int len)
 {
 	while (len >= 0)
@@ -46,7 +45,5 @@ int	ft_putchar_rev(unsigned long long n, int len)
 		ft_putchar(n);
 		len--;
 	}
-
 	return (1);
 }
-
