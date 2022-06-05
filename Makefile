@@ -35,9 +35,9 @@ RM = rm -rf
 
 
 SOURCES = ft_printf.c\
-			ft_printf_utils.c\
-			ft_printf_hexs.c\
-			ft_printf_getlen.c\
+			utils.c\
+			hexs.c\
+			getlen.c\
 			libft_functions.c\
 
 
