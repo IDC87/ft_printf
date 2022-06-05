@@ -6,7 +6,7 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/25 20:48:58 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/06/05 20:45:27 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,13 @@ int	ft_printf(const char *string, ...)
 	va_start(arg, string);
 	while (string[i])
 	{
-		if ((string[i] == '%') && (ft_strchr("cspdiuxX%", string[i + 1])))
+		if (string[i] != '%')
+			ret = ret + write(1, &string[i], 1);
+		else
 		{
 			ret = ret + get_specifier(arg, string, i);
 			i++;
 		}
-		else
-			ret = ret + write(1, &string[i], 1);
 		i++;
 	}
 	va_end(arg);
