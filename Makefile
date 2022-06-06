@@ -56,7 +56,7 @@ clean:
 fclean: clean
 	@echo "$(YELLOW)CleAnINg liBFile$(DEF_COLOR)"
 	@$(RM) $(NAME)
-re: fclean
+re: fclean all
 
 erase: re
 	@echo "$(YELLOW)CleAnINg A.OUT$(DEF_COLOR)"
