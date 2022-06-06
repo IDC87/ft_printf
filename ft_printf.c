@@ -6,7 +6,7 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/06/05 20:45:27 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:49:43 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,26 @@ int	unsigned_func_2(unsigned int n)
 
 int	get_specifier(va_list arg, const char *string, int i)
 {
+	int	ret;
+
+	ret = 0;
 	if (string[i + 1] == 'c')
-		return (ft_putchar(va_arg(arg, int)));
+		ret = ret + ft_putchar(va_arg(arg, int));
 	else if ((string[i + 1] == 'd') || (string[i + 1] == 'i'))
-		return (ft_putchar_num(va_arg(arg, int)));
+		ret = ret + ft_putchar_num(va_arg(arg, int));
 	else if (string[i + 1] == 's')
-		return (ft_putstr(va_arg(arg, char *)));
+		ret = ret + ft_putstr(va_arg(arg, char *));
 	else if (string[i + 1] == 'p')
-		return (put_hex_p(va_arg(arg, unsigned long long)));
+		ret = ret + put_hex_p(va_arg(arg, unsigned long long));
 	else if (string[i + 1] == 'u')
-		return (unsigned_func_2(va_arg(arg, unsigned int)));
+		ret = ret + unsigned_func_2(va_arg(arg, unsigned int));
 	else if (string[i + 1] == 'x')
-		return (hex_converter_lower(va_arg(arg, unsigned long long)));
+		ret = ret + hex_converter_lower(va_arg(arg, unsigned long long));
 	else if (string[i + 1] == 'X')
-		return (hex_converter_upper(va_arg(arg, unsigned int)));
+		ret = ret + hex_converter_upper(va_arg(arg, unsigned int));
 	else if (string[i + 1] == '%')
-		return (ft_putchar(string[i + 1]));
-	return (0);
+		ret = ret + ft_putchar(string[i + 1]);
+	return (ret);
 }
 
 int	ft_printf(const char *string, ...)
