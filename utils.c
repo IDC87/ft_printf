@@ -59,3 +59,4 @@ int	ft_putstr(char *s)
 	}
 	return (ft_strlen(s));
 }
+//done
