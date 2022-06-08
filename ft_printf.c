@@ -6,7 +6,7 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:22:57 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/06/06 15:56:01 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/06/08 16:11:18 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,4 @@ int	ft_printf(const char *string, ...)
 	va_end(arg);
 	return (ret);
 }
+//done

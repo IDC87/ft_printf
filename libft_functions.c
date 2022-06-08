@@ -6,7 +6,7 @@
 /*   By: ivda-cru <ivda-cru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:52:26 by ivda-cru          #+#    #+#             */
-/*   Updated: 2022/05/26 15:21:18 by ivda-cru         ###   ########.fr       */
+/*   Updated: 2022/06/08 16:10:36 by ivda-cru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,3 +90,4 @@ char	*ft_itoa(int n)
 	convertion(str, n, len, j);
 	return (str);
 }
+//done
