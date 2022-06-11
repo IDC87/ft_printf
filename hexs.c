@@ -14,10 +14,8 @@
 
 int	hex_converter(unsigned long long n)
 {
-	int	i;
 	int	ret;
 
-	i = 0;
 	ret = 0;
 	if (n == 0)
 		return (write(1, "0", 1));
@@ -39,10 +37,8 @@ int	hex_converter(unsigned long long n)
 
 int	hex_converter_lower(unsigned int n)
 {
-	int	i;
 	int	ret;
 
-	i = 0;
 	ret = 0;
 	if (n == 0)
 		return (write(1, "0", 1));
