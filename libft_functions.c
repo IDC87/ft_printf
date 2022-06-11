@@ -57,9 +57,6 @@ int	itoa_size(int n)
 
 char	*convertion(char *str, int n, int len, int j)
 {
-	int	z;
-
-	z = 0;
 	while (len-- != j)
 	{
 		str[len] = (n % 10) + '0';
